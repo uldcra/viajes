@@ -9,14 +9,16 @@ class ClientDestination extends Model
 {
     use HasFactory;
     protected $table = 'clients_destination';
-
+    protected $fillable = [
+        'client_id', 'destination_id'
+    ];
     /**
      * Get the user that owns the ClientDestination
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
      */
-    public function clients(): BelongsTo
+    public function clients(): belongsToMany
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsToMany(Client::class);
     }
 }

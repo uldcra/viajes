@@ -15,8 +15,8 @@ class Client extends Model
         'name', 'surname', 'dni','phone'
     ];
 
-    public function destinationsClients(): HasMany
+    public function destinationsClients()
     {
-        return $this->hasMany(ClientDestination::class);
+        return $this->belongsToMany(ClientDestination::class,'clients_destination','client_id','destination_id');
     }
 }
